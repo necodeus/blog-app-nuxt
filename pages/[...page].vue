@@ -91,6 +91,7 @@
 
 <script lang="ts" setup>
 import { useBlogStore } from "../stores/blogStore"
+
 const blogStore = useBlogStore()
 
 const router = useRouter()
@@ -98,7 +99,7 @@ const router = useRouter()
 const isBottomAdVisible = ref(false)
 const isTopAdVisible = ref(false)
 
-const { data, pending } = useFetch<any>(`/api/_page?path=${router.currentRoute.value.path}`)
+const { data, pending } = await useFetch<any>(`/api/_page?path=${router.currentRoute.value.path}`)
 
 const topAdVisible = (isVisible: boolean) => {
     if (isVisible) {

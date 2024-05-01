@@ -1,18 +1,14 @@
-# Blog
+# blog-nuxt
+
+My personal blog, built with Nuxt.js.
 
 [![Release](https://github.com/necodeus/blog-nuxt/actions/workflows/release.yml/badge.svg?branch=production)](https://github.com/necodeus/blog-nuxt/actions/workflows/release.yml)
 
-## Description
-
-... ;)
-
 ## Requirements
 
--  [api-php](https://github.com/necodeus/api-php) (API)
--  [acp-nuxt](https://github.com/necodeus/acp-nuxt) (Nuxt App)
--  [blog-wss](https://github.com/necodeus/blog-ws) (WebSocket Server)
-
-## Installation
+-  [api-php](https://github.com/necodeus/api-php) (data api)
+-  [acp-nuxt](https://github.com/necodeus/acp-nuxt) (admin app)
+-  [blog-wss](https://github.com/necodeus/blog-ws) (server for live broadcasting)
 
 ```bash
 nvm install 20.9.0

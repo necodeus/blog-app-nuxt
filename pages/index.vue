@@ -15,5 +15,5 @@
 </template>
 
 <script setup>
-const { data, pending } = useFetch(`/api/_index`)
+const { data, pending } = await useFetch(`/api/_index`)
 </script>
