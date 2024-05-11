@@ -9,7 +9,7 @@ const getData = (posts = []) => {
 
 	const currentRoute = router.currentRoute.value.path
 
-	return posts?.filter((post) => post.slug !== currentRoute) || []
+	return posts?.filter((post) => post.path !== currentRoute) || []
 }
 
 const { data, pending } = useFetch('/api/_index')

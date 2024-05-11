@@ -18,7 +18,7 @@
                 <span class="text-[38px]">{{ post.title }}</span>
             </h1>
 
-            <NuxtLink :to="post.slug" class="w-full h-full top-0 bottom-0 right-0 left-0 absolute"></NuxtLink>
+            <NuxtLink :to="post.path" class="w-full h-full top-0 bottom-0 right-0 left-0 absolute"></NuxtLink>
         </li>
     </ul>
 </template>

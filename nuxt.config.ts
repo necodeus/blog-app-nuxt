@@ -37,8 +37,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            'COMMON_API_URL': 'http://common-api.localhost/api/v1',
-            'PAPER_API_URL': 'http://paper-api.localhost/api/v1',
+            'BLOG_API_URL': 'http://blog-api.localhost/api/v1',
             'IMAGES_URL': 'http://images.localhost',
             'WEBSOCKET_SESSION_HOST': 'localhost', // necodeo.com
             'WEBSOCKET_ADDRESS': 'ws://localhost:8090', // wss://www.necodeo.com:8090
