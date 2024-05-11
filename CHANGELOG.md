@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/necodeus/blog-app-nuxt/compare/v1.28.4...v1.29.0) (2024-05-11)
+
+
+### Features
+
+* new response keys, new envs ([5e34b72](https://github.com/necodeus/blog-app-nuxt/commit/5e34b7225931aedff92e5b531cee19c88622fa5d))
+
 ## [1.28.4](https://github.com/necodeus/blog-nuxt/compare/v1.28.3...v1.28.4) (2024-02-18)
 
 
