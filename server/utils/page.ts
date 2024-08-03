@@ -1,10 +1,7 @@
 export const getPageData = cachedFunction(async (slug: string) => {
-    const config = useRuntimeConfig()
-    const BLOG_API_URL = config.public.BLOG_API_URL
+    const url = `${useRuntimeConfig().public.BLOG_API_URL}/initial-url-data?path=${slug}`;
 
-    console.log(`${BLOG_API_URL}/page?slug=${slug}`)
-
-    return await $fetch(`${BLOG_API_URL}/page?slug=${slug}`)
+    return await $fetch(url)
         .catch(() => {
             return {
                 error: true,

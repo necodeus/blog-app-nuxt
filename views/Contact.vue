@@ -1,3 +1,3 @@
 <template>
-    <NuxtPage />
+    <div>Kontakt</div>
 </template>

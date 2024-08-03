@@ -1,3 +1,3 @@
 <template>
-    <NuxtPage />
+    <div>Autor</div>
 </template>

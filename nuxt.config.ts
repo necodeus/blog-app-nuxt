@@ -1,23 +1,14 @@
 export default defineNuxtConfig({
-    hooks: {
-        'pages:extend'(pages) {
-            if (process.env.NODE_ENV === 'development') {
-                return
-            }
-
-            const storyIndex = pages.findIndex(page => page.name === 'story')
-
-            if (storyIndex !== -1) {
-                pages.splice(storyIndex, 1)
-            }
-        }
-    },
     css: [
         '@/assets/css/main.css',
     ],
     components: [
         {
             path: '~/components',
+            pathPrefix: false,
+        },
+        {
+            path: '~/views',
             pathPrefix: false,
         },
     ],
@@ -37,7 +28,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            'BLOG_API_URL': 'http://blog-api.localhost/api/v1',
+            'BLOG_API_URL': 'https://blog-api.necodeo.com/api',
             'IMAGES_URL': 'http://images.localhost',
             'WEBSOCKET_SESSION_HOST': 'localhost', // necodeo.com
             'WEBSOCKET_ADDRESS': 'ws://localhost:8090', // wss://www.necodeo.com:8090

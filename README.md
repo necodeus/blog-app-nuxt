@@ -1,23 +1,24 @@
-# blog-nuxt
+# Blog (Nuxt 3)
 
-My personal blog, built with Nuxt.js.
+[![Release](https://github.com/necodeus/blog-app-nuxt3/actions/workflows/release.yml/badge.svg?branch=production)](https://github.com/necodeus/blog-app-nuxt3/actions/workflows/release.yml)
 
-[![Release](https://github.com/necodeus/blog-nuxt/actions/workflows/release.yml/badge.svg?branch=production)](https://github.com/necodeus/blog-nuxt/actions/workflows/release.yml)
+## Development with remote API
 
-## Requirements
-
--  [api-php](https://github.com/necodeus/api-php) (data api)
--  [acp-nuxt](https://github.com/necodeus/acp-nuxt) (admin app)
--  [blog-wss](https://github.com/necodeus/blog-ws) (server for live broadcasting)
-
-```bash
-nvm install 20.9.0
-nvm use 20.9.0
-npm install -g yarn
-yarn
-yarn dev
+```
+nvm use
+npm install
 ```
 
-## Changelog
+```
+APP_ENV=development npm run dev
+```
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+## Development with local API
+
+```
+APP_ENV=local npm run dev
+```
+
+## Live Preview
+
+https://blog-app-nuxt-dev.necodeo.com/

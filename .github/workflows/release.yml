@@ -2,62 +2,46 @@ name: Release
 
 on:
   push:
-    branches:
-      - production
+    tags:
+      - "v*"
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: oven-sh/setup-bun@v1
-        # with:
-        #   bun-version: latest
+      - name: checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: setup node
         uses: actions/setup-node@v2
         with:
           node-version: '20.9.0'
 
-      - name: Install dependencies
+      - name: install & build
         run: |
-          chmod +x ./install.sh
-          ./install.sh --node
+          npm i
+          npm run build
 
-      - name: Build
+      - name: create release
+        id: cr
         run: |
-          chmod +x ./build.sh
-          ./build.sh --node
+          chmod +x ci/create_release.sh
+          ci/./create_release.sh "${{ secrets.PAT }}" "${{ github.repository }}" "${{ github.ref_name }}"
+          echo "release_id=$(cat release_id)" >> "$GITHUB_OUTPUT"
 
-      - name: Setup Environment Variables for Artifacts
-        run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
-
-      - name: Archive Built Output
-        run: |
-          cd .output
-          tar -czf ../${{ env.ARCHIVE_NAME }} *
-          cd ..
-
-      - name: Semantic Release
-        run: npx semantic-release
+      - name: archive
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-
-      - name: Get Latest Release Upload
-        id: get_upload_url
+          RELEASE_ID: ${{ steps.cr.outputs.release_id }}
         run: |
-          URL=$(curl -H "Authorization: token ${{ secrets.PAT }}" \
-              https://api.github.com/repos/${{ github.repository }}/releases/latest \
-              | jq -r '.upload_url')
-          echo "UPLOAD_URL=${URL}" >> $GITHUB_ENV
+          cd .output 
+          tar -czf ../blog-app-nuxt-${{ github.ref_name }}.tar.gz *
 
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        if: success()
+      - name: upload
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-        with:
-          upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: ${{ env.ARCHIVE_NAME }}
-          asset_name: ${{ env.ARCHIVE_NAME }}
-          asset_content_type: application/gzip
+          RELEASE_ID: ${{ steps.cr.outputs.release_id }}
+        run: |
+          chmod +x ci/upload.sh
+          echo "PAT: ${{ secrets.PAT }}"
+          echo "REPO: ${{ github.repository }}"
+          echo "RELEASE_ID: ${{ env.RELEASE_ID }}"
+          ci/./upload.sh "${{ secrets.PAT }}" "${{ github.repository }}" "${{ env.RELEASE_ID }}" "${{ github.ref_name }}"
