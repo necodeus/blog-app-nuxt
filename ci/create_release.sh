@@ -12,12 +12,20 @@ response=$(curl -L \
     https://api.github.com/repos/${REPO_NAME}/releases \
     -d "{\"tag_name\": \"${TAG_NAME}\", \"name\": \"${TAG_NAME}\", \"draft\": false, \"prerelease\": false}")
 
+echo "$response"
+
 release_id=$(echo "$response" | jq -r '.id')
+
+echo "Release ID: ${release_id}"
 
 if [ "$release_id" == "null" ]; then
     response=$(curl -L -H "Accept: application/vnd.github+json" https://api.github.com/repos/${REPO_NAME}/releases/tags/${TAG_NAME})
 
+    echo "$response"
+
     release_id=$(echo "$response" | jq -r '.id')
+
+    echo "Release ID: ${release_id}"
 fi
 
 echo "${release_id}" > release_id
