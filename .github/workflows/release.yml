@@ -27,7 +27,8 @@ jobs:
         run: |
           chmod +x ci/create_release.sh
           ci/./create_release.sh "${{ secrets.PAT }}" "${{ github.repository }}" "${{ github.ref_name }}"
-          echo "release_id=$(cat release_id)" >> "$GITHUB_OUTPUT"
+          echo "release_id=$(cat release_id)"
+          echo "release_id=$(cat release_id)" >> $GITHUB_OUTPUT
 
       - name: archive
         env:
@@ -44,4 +45,5 @@ jobs:
           echo "PAT: ${{ secrets.PAT }}"
           echo "REPO: ${{ github.repository }}"
           echo "RELEASE_ID: ${{ env.RELEASE_ID }}"
+          echo "VERSION: ${{ github.ref_name }}"
           ci/./upload.sh "${{ secrets.PAT }}" "${{ github.repository }}" "${{ env.RELEASE_ID }}" "${{ github.ref_name }}"
