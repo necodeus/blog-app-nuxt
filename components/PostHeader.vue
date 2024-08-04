@@ -8,9 +8,6 @@
                 <img class="background" :src="image" loading="lazy" />
             </picture>
             <div class="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
-                <div class="m-[20px] absolute z-[1] right-0 top-0 flex">
-                    <Back />
-                </div>
                 <div class="component-padding relative !py-0 flex items-center mb-[10px]">
                     <img
                         :src="authorPhoto"
@@ -38,7 +35,7 @@
             <div class="flex items-center mb-[10px]">
                 <Stars :rating="3" :postId="postId" /> 
                 <div class="div-separator"></div>
-                <CommentLink id="comments" class="font-medium">{{ numberOfComments }} {{ numberOfCommentsStringPL }}</CommentLink>
+                {{ numberOfComments }} {{ numberOfCommentsStringPL }}
             </div>
             <span class="text-[20px] leading-[35px]">{{ teaser }}</span>
         </div>

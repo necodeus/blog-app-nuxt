@@ -1,7 +1,10 @@
 <template>
-    <Head>
-        <Meta name="theme-color" content="#fff" />
-    </Head>
+    <Navigation :items="[
+        { name: 'Artykuły', url: '/' },
+        { name: 'Autorzy', url: '/autorzy' },
+        { name: 'Projekty', url: '/projekty' },
+        { name: 'Kontakt', url: '/kontakt' },
+    ]" />
 
     <MainContainer>
         <SectionWrapper width="var(--desktop-main-content-width)">
@@ -13,7 +16,7 @@
 
     <AsideContainer class="component-border-vertical">
         <BasicSection>
-            <OtherPostsFilled :posts="[]" />
+            <OtherPosts :posts="[]" />
         </BasicSection>
         <BasicSection>
             <ExternalLinks />

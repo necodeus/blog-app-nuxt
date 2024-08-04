@@ -8,9 +8,6 @@
                     loading="lazy"
                 />
             </picture>
-            <div class="m-[20px] absolute z-[1] top-0 right-0 flex">
-                <BackFilled />
-            </div>
         </div>
     </div>
     <div class="component-border-top relative font-jost">

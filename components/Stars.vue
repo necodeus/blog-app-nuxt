@@ -39,7 +39,7 @@ User
                     <path
                         d="M9.9,1 L12.5,7.7 L19.8,7.7 L14.15,12.3 L16.6,19 L9.9,14.6 L3.2,19 L5.65,12.3 L0,7.7 L7.3,7.7 Z"
                         fill="gold"
-                        :stroke="(star === selectedRating ? '#c6a700' : 'transparent')"
+                        :stroke="(star === rating ? '#c6a700' : 'transparent')"
                         stroke-opacity="0.25"
                         stroke-width="1"
                     ></path>

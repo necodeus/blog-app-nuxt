@@ -1,9 +1,16 @@
 <template>
+    <Navigation :items="[
+        { name: 'Artykuły', url: '/' },
+        { name: 'Autorzy', url: '/autorzy' },
+        { name: 'Projekty', url: '/projekty' },
+        { name: 'Kontakt', url: '/kontakt' },
+    ]" />
+
     <MainContainer>
         <SectionWrapper width="var(--desktop-main-content-width)">
             <BasicSection width="var(--main-width)" class="component-border-vertical lg:h-[100vh]">
                 <div class="component-padding">
-                    <PostList :posts="data.posts" />
+                    <PostsList :posts="data.posts" />
                 </div>
             </BasicSection>
         </SectionWrapper>
@@ -11,7 +18,6 @@
 
     <AsideContainer class="component-border-vertical">
         <BasicSection>
-            <ExternalLinks />
         </BasicSection>
     </AsideContainer>
 </template>

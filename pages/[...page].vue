@@ -2,20 +2,20 @@
     <DynamicComponent :data="data" />
 </template>
 
-<script lang="ts" setup>
-const { data } = await useFetch<any>(`/api/_page?path=${useRouter().currentRoute.value.path}`)
+<script setup>
+const { data } = await useFetch(`/api/_page?path=${useRouter().currentRoute.value.path}`);
 
-const contentType = unref(data).url?.content_type
+const contentType = unref(data).url?.content_type;
 
-const DynamicComponent = defineAsyncComponent(() => import(`../views/${getViewByContentType(contentType)}.vue`))
+const DynamicComponent = defineAsyncComponent(() => import(`../views/${getViewByContentType(contentType)}.vue`));
 
-const getViewByContentType = (contentType: string) => {
+const getViewByContentType = (contentType) => {
     switch (contentType) {
         case 'POST':
             return 'Post'
         case 'POSTS':
             return 'Posts'
-        case 'AUHTOR':
+        case 'AUTHOR':
             return 'Author'
         case 'AUTHORS':
             return 'Authors'

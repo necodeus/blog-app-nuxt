@@ -1,13 +1,13 @@
 <template>
 	<div class="c-archive component-padding font-jost">
-		<SectionTitle><b>Archive</b> of posts</SectionTitle>
+		<SectionTitle><b>Archiwum</b> wpisów</SectionTitle>
 		<ul>
 			<li>
-				<NuxtLink to="/archive/june-2020">
+				<NuxtLink to="/archiwum/lipiec-2024">
 					<div>
-						<div class="month">June 2020</div>
+						<div class="month">lipiec 2024</div>
 						<div class="separator"></div>
-						<div class="num-of-posts">2 posts</div>
+						<div class="num-of-posts">2 wpisy</div>
 					</div>
 				</NuxtLink>
 			</li>

@@ -1,17 +1,15 @@
 <template>
+    <Navigation :items="[
+        { name: 'Artykuły', url: '/' },
+        { name: 'Autorzy', url: '/autorzy' },
+        { name: 'Projekty', url: '/projekty' },
+        { name: 'Kontakt', url: '/kontakt' },
+    ]" />
     <MainContainer>
         <SectionWrapper width="var(--desktop-main-content-width)">
-            <template #aside>
-                <StickySection width="334px">
-                    <div class="background m-[7px]">
-                        <Advertisement />
-                    </div>
-                </StickySection>
-            </template>
-
             <BasicSection width="var(--main-width)" class="component-border-vertical">
                 <div>
-                    <Header
+                    <PostHeader
                         :image="data.post.cover_picture['1200x430']"
                         :authorName="data.postAuthor.name"
                         :authorPhoto="data.postAuthor.author_picture['25x25']"
@@ -26,14 +24,6 @@
         </SectionWrapper>
 
         <SectionWrapper width="var(--desktop-main-content-width)">
-            <template #aside>
-                <StickySection width="334px">
-                    <div class="m-[7px]">
-                        <ContentNav :items="[]" />
-                    </div>
-                </StickySection>
-            </template>
-
             <BasicSection width="var(--main-width)" class="not-desktop">
                 <div class="m-[7px]">
                     <ContentNav :items="[]" />
@@ -41,35 +31,19 @@
             </BasicSection>
 
             <BasicSection width="var(--main-width)" class="component-border-vertical">
-                <Content content="" />
+                <PostContent content="" />
 
                 <div class="component-border-top p-[7px]">
                     <PostAuthor :profile="data.postAuthor" />
                 </div>
             </BasicSection>
         </SectionWrapper>
-
-        <SectionWrapper width="var(--desktop-main-content-width)">
-            <template #aside>
-                <StickySection width="334px">
-                    <div class="m-[7px]">
-                        <Advertisement />
-                    </div>
-                </StickySection>
-            </template>
-
-            <BasicSection width="var(--main-width)" class="component-border-vertical">
-                <Comments id="comments" :postId="data.post.id" />
-            </BasicSection>
-        </SectionWrapper>
     </MainContainer>
 
     <AsideContainer class="component-border-vertical">
         <BasicSection>
-            <OtherPostsFilled :posts="data.otherPosts" />
-        </BasicSection>
-        <BasicSection>
-            <ExternalLinks />
+            <OtherPosts :posts="[]" />
+            <Archive />
         </BasicSection>
     </AsideContainer>
 </template>
