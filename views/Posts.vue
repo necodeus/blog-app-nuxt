@@ -10,7 +10,7 @@
         <SectionWrapper width="var(--desktop-main-content-width)">
             <BasicSection width="var(--main-width)" class="component-border-vertical lg:h-[100vh]">
                 <div class="component-padding">
-                    <PostsList :posts="data.posts" />
+                    <PostsListing :posts="data.posts" />
                 </div>
             </BasicSection>
         </SectionWrapper>

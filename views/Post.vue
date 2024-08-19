@@ -26,7 +26,7 @@
         <SectionWrapper width="var(--desktop-main-content-width)">
             <BasicSection width="var(--main-width)" class="not-desktop">
                 <div class="m-[7px]">
-                    <ContentNav :items="[]" />
+                    <PostNavigation :items="[]" />
                 </div>
             </BasicSection>
 
@@ -42,8 +42,8 @@
 
     <AsideContainer class="component-border-vertical">
         <BasicSection>
-            <OtherPosts :posts="[]" />
-            <Archive />
+            <AsidePopularPosts :posts="[]" />
+            <AsideArchive />
         </BasicSection>
     </AsideContainer>
 </template>

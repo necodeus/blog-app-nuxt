@@ -16,10 +16,10 @@
 
     <AsideContainer class="component-border-vertical">
         <BasicSection>
-            <OtherPosts :posts="[]" />
+            <AsidePopularPosts :posts="[]" />
         </BasicSection>
         <BasicSection>
-            <ExternalLinks />
+            <AsideLinks />
         </BasicSection>
     </AsideContainer>
 </template>

@@ -38,14 +38,14 @@ const songs = [
 
     <AsideContainer class="component-border-vertical">
         <BasicSection>
-            <ExternalLinks />
+            <AsideLinks />
         </BasicSection>
 
         <BasicSection>
-            <Profiles />
+            <AsideProfiles />
             <div class="component-padding font-jost">
                 <SectionTitle><b>Spotify</b> - na żywo</SectionTitle>
-                <Spotify :songs="songs" />
+                <AsideSpotify :songs="songs" />
             </div>
         </BasicSection>
     </AsideContainer>
