@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+	posts: {
+		default: () => [],
+		required: true,
+	},
+})
+</script>
+
 <template>
 	<div class="component-padding font-jost relative">
 		<SectionTitle><b>Popularne</b> wpisy</SectionTitle>
@@ -8,15 +17,6 @@
 		</ul>
 	</div>
 </template>
-
-<script setup>
-defineProps({
-	posts: {
-		default: () => [],
-		required: true,
-	},
-})
-</script>
 
 <style scoped>
 .list:not(:last-child) {
