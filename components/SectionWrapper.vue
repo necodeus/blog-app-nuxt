@@ -1,6 +1,6 @@
 <template>
     <div class="flex">
-        <div class="desktop flex flex-col items-end component-border-top" :style="{ width, minWidth: width }">
+        <div class="flex flex-col items-end" :style="{ width, minWidth: width }">
             <slot name="aside"></slot>
         </div>
         <div class="w-full">

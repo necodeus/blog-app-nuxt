@@ -15,12 +15,12 @@ export default defineNuxtConfig({
     plugins: [
         '~/plugins/observe-visibility.ts',
     ],
-    modules: [
-        '@nuxtjs/tailwindcss',
-        '@nuxtjs/partytown',
-        '@pinia/nuxt',
-    ],
+    modules: ['@nuxtjs/tailwindcss', '@nuxtjs/partytown', '@pinia/nuxt', '@nuxtjs/storybook'],
     pages: true,
+    storybook: {
+      url: 'http://localhost:6006',
+      port: 6006,
+    },
     vite: {
         ssr: {
             noExternal: ["moment"],

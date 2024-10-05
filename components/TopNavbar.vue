@@ -2,6 +2,7 @@
 const { items } = defineProps({
     items: {
         type: Array,
+        default: [],
         required: true,
     },
 });
@@ -18,13 +19,15 @@ const router = useRouter();
             margin: '0 30px',
         }">
             <Logo class="mr-[20px]" height="25" />
-            <NuxtLink
-                v-for="item in items"
-                :to="item.url"
-                :class="router.currentRoute.value.path === item.url ? 'font-medium' : ''"
-            >
-                {{ item.name }}
-            </NuxtLink>
+            <template v-if="items.length">
+                <NuxtLink
+                    v-for="item in items"
+                    :to="item.url"
+                    :class="router.currentRoute.value.path === item.url ? 'font-medium' : ''"
+                >
+                    {{ item.name }}
+                </NuxtLink>
+            </template>
         </div>
     </div>
 </template>

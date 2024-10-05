@@ -8,12 +8,15 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare && husky install",
-    "upgrade": "nuxi upgrade --force"
+    "upgrade": "nuxi upgrade --force",
+    "storybook": "storybook dev --port 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@nuxtjs/partytown": "^1.4.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@pinia/nuxt": "^0.5.1",
+    "@storybook-vue/nuxt": "^8.2.0",
     "@types/markdown-it": "^13.0.7",
     "@types/uuid": "^9.0.8",
     "highlight.js": "^11.9.0",
@@ -29,6 +32,15 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "nuxt": "^3.12.4"
+    "@nuxtjs/storybook": "^8.1.0",
+    "@storybook/addon-essentials": "8.0.8",
+    "@storybook/addon-interactions": "8.0.8",
+    "@storybook/addon-links": "8.0.8",
+    "@storybook/blocks": "8.0.8",
+    "@storybook/builder-vite": "8.0.8",
+    "@storybook/test": "8.0.8",
+    "@types/node": "^18.17.5",
+    "nuxt": "^3.12.4",
+    "storybook": "8.0.8"
   }
 }
