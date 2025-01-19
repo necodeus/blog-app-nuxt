@@ -1,24 +1,22 @@
 <template>
-    <ul class="font-jost inline-flex flex-col">
-        <li class="list relative" v-for="post in posts" v-bind:key="post.id">
+    <ul class="font-jost inline-flex flex-col gap-[30px] p-[30px] component-border-bottom w-full">
+        <li v-for="post in posts" v-bind:key="post.id">
             <div class="flex items-center">
-                <picture>
-                    <img 
-                        :src="post.author_picture['25x25']"
-                        loading="lazy"
-                        class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
-                    />
-                </picture>
-                <span class="ml-[10px] text-[16px]"><b class="font-semibold">{{ post?.author_name }}</b></span>
-                <div class="div-separator"></div>
-                <span class="text-[16px]">{{ moment(post.created_at).fromNow() }}</span>
+                <a :href="post.author_path || '#'" class="flex items-center">
+                    <picture>
+                        <img :src="post.author_picture?.['25x25']" alt="" loading="lazy"
+                            class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover" />
+                    </picture>
+                    <span class="ml-[10px] text-[16px]">
+                        <b class="font-medium">{{ post.author_name }}</b>
+                    </span>
+                </a>
+                <div v-if="post.created_at" class="divSeparator"></div>
+                <span v-if="post.created_at" class="text-[16px]">{{ moment(post.created_at).fromNow() }}</span>
             </div>
-
             <h1 class="flex mt-[10px]">
-                <span class="text-[38px]">{{ post.title }}</span>
+                <NuxtLink :to="post.path || ''" class="text-[38px]"> {{ post.title }}</NuxtLink>
             </h1>
-
-            <NuxtLink :to="post.path" class="w-full h-full top-0 bottom-0 right-0 left-0 absolute"></NuxtLink>
         </li>
     </ul>
 </template>
@@ -30,8 +28,8 @@ moment.locale("pl")
 defineProps({
     posts: {
         type: Array,
-        default: () => [],
         required: true,
+        default: () => [],
     },
 })
 </script>

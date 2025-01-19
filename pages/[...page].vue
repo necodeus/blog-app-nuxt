@@ -9,10 +9,6 @@ const getViewName = (contentType: string) => {
             return 'Author'
         case 'AUTHORS':
             return 'Authors'
-        case 'PROJECTS':
-            return 'Projects'
-        case 'CONTACT':
-            return 'Contact'
         default:
             return 'Error'
     }

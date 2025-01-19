@@ -1,9 +1,13 @@
 <script setup>
 import moment from 'moment/min/moment-with-locales'
-
 moment.locale('pl')
 
 const { post } = defineProps({
+  navigation: {
+    type: Array,
+    default: () => [],
+    required: false,
+  },
   post: {
     type: Object,
     default: () => ({}),
@@ -15,60 +19,31 @@ const { post } = defineProps({
     required: false,
   },
 })
+
+const contentItems = [];
 </script>
 
 <template>
-  <TopNavbar 
-    :items="[
-      { name: 'Artykuły', url: '/' },
-      { name: 'Autorzy', url: '/autorzy' },
-      { name: 'Projekty', url: '/projekty' },
-      { name: 'Kontakt', url: '/kontakt' },
-    ]"
-  />
+  <ContentLayout>
+    <template #header>
+      <TopNavbar :items="navigation" />
+    </template>
 
-  <MainContainer>
-    <SectionWrapper
-      width="var(--desktop-main-content-width)"
-    >
-      <BasicSection
-        width="var(--main-width)"
-        class="component-border-vertical"
-      >
-        <div>
-          <PostHeader
-            :image="post.cover_picture['1200x430']"
-            :authorName="postAuthor.name"
-            :authorPhoto="postAuthor.author_picture['25x25']"
-            :name="post.title"
-            :createdAt="post.created_at"
-            teaser=""
-            :postId="post.id"
-            :numberOfComments="0" />
-        </div>
-      </BasicSection>
-    </SectionWrapper>
+    <PostHeader
+      v-if="post?.id"
+      :coverPicture="post.cover_picture"
+      :postAuthor="postAuthor"
+      :createdAt="post.created_at"
+      :name="post.title"
+      :rating="4.5"
+      :numberOfComments="post.comments_count"
+      :teaser="post.teaser"
+    />
 
-    <SectionWrapper width="var(--desktop-main-content-width)">
-      <BasicSection width="var(--main-width)" class="not-desktop">
-        <div class="m-[7px]">
-          <PostNavigation :items="[]" />
-        </div>
-      </BasicSection>
+    <PostNavigation v-if="contentItems.length > 0" :items="contentItems" />
 
-      <BasicSection width="var(--main-width)" class="component-border-vertical">
-        <PostContent content="" />
-
-        <div class="component-border-top p-[7px]">
-          <PostAuthor :profile="postAuthor" />
-        </div>
-      </BasicSection>
-    </SectionWrapper>
-  </MainContainer>
-
-  <AsideContainer class="component-border-vertical">
-    <BasicSection>
-      <AsidePopularPosts :posts="[]" />
-    </BasicSection>
-  </AsideContainer>
+    <div v-if="post.content.length" class="border-b-[1px] border-[#e5e5e5]">
+      <PostContent :content="post.content ?? ''" />
+    </div>
+  </ContentLayout>
 </template>

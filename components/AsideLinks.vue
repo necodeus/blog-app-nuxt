@@ -1,18 +1,20 @@
 <template>
-	<div class="external-links component-padding font-jost">
-		<SectionTitle><b>Linki</b> zewnętrzne</SectionTitle>
-		<ul class="flex flex-col">
-			<li>
-				<a
-					class="text-[20px] inline-block"
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					href="https://github.com/necodeus/blog-nuxt"
-				>
-					<b class="font-medium">github.com/necodeus/blog-nuxt</b><br />
-					<div class="mt-[10px]">Kod źródłowy tej strony</div>
-				</a>
-			</li>
-		</ul>
-	</div>
+  <ul class="font-jost flex flex-col gap-[30px] p-[30px] component-border-bottom">
+    <li v-for="link in links" :key="link.href">
+      <a class="text-[20px] inline-block" target="_blank" rel="noopener noreferrer nofollow" :href="link.href">
+        <b class="font-medium">{{ link.text }}</b>
+        <br />
+        <div class="mt-[10px]">{{ link.description }}</div>
+      </a>
+    </li>
+  </ul>
 </template>
+
+<script setup>
+const { links } = defineProps({
+  links: {
+    type: Array,
+    required: true,
+  },
+});
+</script>

@@ -1,5 +1,10 @@
 <script setup>
 const d = defineProps({
+    navigation: {
+        type: Array,
+        default: () => [],
+        required: false,
+    },
     posts: {
         type: Array,
         default: [],
@@ -7,39 +12,15 @@ const d = defineProps({
     },
 })
 const posts = d.posts
-
-console.log(d);
 </script>
 
 <template>
-    <TopNavbar
-        :items="[
-            { name: 'Artykuły', url: '/' },
-            { name: 'Autorzy', url: '/autorzy' },
-            { name: 'Projekty', url: '/projekty' },
-            { name: 'Kontakt', url: '/kontakt' },
-        ]"
-    />
+    <ContentLayout>
+        <template #header>
+            <TopNavbar :items="navigation" />
+        </template>
 
-    <MainContainer>
-        <SectionWrapper
-            width="var(--desktop-main-content-width)"
-        >
-            <BasicSection
-                width="var(--main-width)"
-                class="component-border-vertical lg:h-[100vh]"
-            >
-                <SectionTitle class="p-[30px] component-border-bottom">
-                    <h1><b>Artykuły</b></h1>
-                </SectionTitle>
-                <div class="component-padding">
-                    <PostsListing :posts="posts" />
-                </div>
-            </BasicSection>
-        </SectionWrapper>
-    </MainContainer>
-
-    <AsideContainer class="component-border-vertical">
-        <BasicSection></BasicSection>
-    </AsideContainer>
+        <SectionTitle text="Artykuły" class="p-[30px]" />
+        <PostsListing :posts="posts" />
+    </ContentLayout>
 </template>

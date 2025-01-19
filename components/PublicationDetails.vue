@@ -1,8 +1,6 @@
 <script setup>
-import Link from "next/link";
-import moment from "moment";
-
-import styles from './PublicationDetails.module.css';
+import moment from 'moment/min/moment-with-locales'
+moment.locale('pl')
 
 const { publisher, createdAt } = defineProps({
     publisher: {
@@ -18,19 +16,15 @@ const { publisher, createdAt } = defineProps({
 </script>
 
 <template>
-    <div class="component-padding relative !py-0 flex items-center mb-[10px]">
-        <NuxtLink v-if="publisher" :href="publisher.path || ''" class="flex items-center">
-            <img
-                :src="publisher.picture?.['25x25']"
-                alt=""
-                loading="lazy"
-                class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
-            />
+    <div class="p-[30px] relative !py-0 flex items-center mb-[10px]">
+        <NuxtLink v-if="publisher" :to="publisher.path || ''" class="flex items-center">
+            <img :src="publisher.picture?.['25x25']" alt="" loading="lazy"
+                class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover" />
             <div class="ml-[10px] font-medium">
-                {publisher.name}
+                {{ publisher.name }}
             </div>
         </NuxtLink>
-        <div v-if="publisher" class={styles.divSeparator}></div>
+        <div class="divSeparator"></div>
         <div>
             {{ moment(createdAt).fromNow() }}
         </div>

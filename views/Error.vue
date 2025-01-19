@@ -1,31 +1,5 @@
-<template>
-    <Navigation :items="[
-        { name: 'Artykuły', url: '/' },
-        { name: 'Autorzy', url: '/autorzy' },
-        { name: 'Projekty', url: '/projekty' },
-        { name: 'Kontakt', url: '/kontakt' },
-    ]" />
-
-    <MainContainer>
-        <SectionWrapper width="var(--desktop-main-content-width)">
-            <BasicSection width="var(--main-width)" class="component-border-vertical lg:h-[100vh]">
-                <ErrorHeader :code="404" message="Strona nie została znaleziona" />
-            </BasicSection>
-        </SectionWrapper>
-    </MainContainer>
-
-    <AsideContainer class="component-border-vertical">
-        <BasicSection>
-            <AsidePopularPosts :posts="[]" />
-        </BasicSection>
-        <BasicSection>
-            <AsideLinks />
-        </BasicSection>
-    </AsideContainer>
-</template>
-
 <script setup>
-const props = defineProps({
+defineProps({
     data: {
         type: Object,
         default: () => ({}),
@@ -33,5 +7,20 @@ const props = defineProps({
     },
 })
 
-console.log(props)
+const navigation = [
+    { name: 'Artykuły', url: '/' },
+    { name: 'Autorzy', url: '/autorzy' },
+]
 </script>
+
+<template>
+    <ContentLayout>
+        <template #header>
+            <TopNavbar :items="navigation" />
+        </template>
+
+        <div class="component-border-bottom">
+            <ErrorHeader :code="404" message="Strona nie została znaleziona" />
+        </div>
+    </ContentLayout>
+</template>

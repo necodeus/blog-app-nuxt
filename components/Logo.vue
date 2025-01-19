@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-const { className, height } = defineProps({
+defineProps({
     className: {
         type: String,
         default: '',
