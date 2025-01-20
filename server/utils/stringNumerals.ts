@@ -1,3 +1,9 @@
+type NumberToPolishNumeral = {
+    one: string;
+    many: string;
+    exceptions: string;
+};
+
 /**
  * Liczebnik główny
  *
@@ -5,12 +11,8 @@
  */
 export const numberToPolishNumeral = (
     comments: number,
-    {
-        one,
-        many,
-        exceptions,
-    }: any,
-) => {
+    { one, many, exceptions }: NumberToPolishNumeral
+): string => {
     comments = Math.abs(comments);
 
     const onesDigit = comments % 10;
@@ -20,11 +22,21 @@ export const numberToPolishNumeral = (
         return one;
     }
 
-    if (onesDigit >= 2 && onesDigit <= 4 && (tensInRange < 10 || tensInRange >= 20)) {
+    if (
+        onesDigit >= 2 &&
+        onesDigit <= 4 &&
+        (tensInRange < 10 || tensInRange >= 20)
+    ) {
         return exceptions;
     }
 
     return many;
+};
+
+type NumberToPolishOrdinalNumeral = {
+    one: string;
+    many: string;
+    exceptions: string;
 };
 
 /**
@@ -33,12 +45,9 @@ export const numberToPolishNumeral = (
  * Pytanie: który z kolei? drugi, trzecia, siódmy, piętnaste
  */
 export const numberToPolishOrdinalNumeral = (
-    comments: number, {
-        one,
-        many,
-        exceptions,
-    }: any,
-) => {
+    comments: number,
+    { one, many, exceptions }: NumberToPolishOrdinalNumeral
+): string => {
     comments = Math.abs(comments);
 
     const onesDigit = comments % 10;
@@ -48,7 +57,11 @@ export const numberToPolishOrdinalNumeral = (
         return one;
     }
 
-    if (onesDigit >= 2 && onesDigit <= 4 && (tensInRange < 10 || tensInRange >= 20)) {
+    if (
+        onesDigit >= 2 &&
+        onesDigit <= 4 &&
+        (tensInRange < 10 || tensInRange >= 20)
+    ) {
         return exceptions;
     }
 
