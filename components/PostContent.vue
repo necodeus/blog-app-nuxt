@@ -321,27 +321,5 @@ defineProps({
             content: '— ';
         }
     }
-
-    /* &::before {
-        content: '„';
-        position: absolute;
-        bottom: -40px;
-        left: 27px;
-        display: block;
-        font-size: 100px;
-        font-family: monospace;
-        color: #ececec;
-    }
-
-    &::after {
-        content: '”';
-        position: absolute;
-        top: -55px;
-        right: 27px;
-        display: block;
-        font-size: 100px;
-        font-family: monospace;
-        color: #ececec;
-    } */
 }
 </style>

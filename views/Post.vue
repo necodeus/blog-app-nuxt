@@ -2,6 +2,8 @@
 import moment from 'moment/min/moment-with-locales'
 moment.locale('pl')
 
+import { slugify } from "../plugins/markdown-it/anchor";
+
 const { post } = defineProps({
   navigation: {
     type: Array,
@@ -20,7 +22,21 @@ const { post } = defineProps({
   },
 })
 
-const contentItems = [];
+
+function extractMarkdownHeadersWithIds(markdownText) {
+  const headers = markdownText.match(/^#{1,6} .+$/gm) ?? [];
+
+  return headers.map((header) => {
+    const title = header.replace(/^#{1,6} /, "");
+
+    return {
+      id: slugify(title),
+      title: title,
+    };
+  });
+}
+
+const contentItems = extractMarkdownHeadersWithIds(post?.content ?? "");
 </script>
 
 <template>
@@ -40,9 +56,9 @@ const contentItems = [];
       :teaser="post.teaser"
     />
 
-    <PostNavigation v-if="contentItems.length > 0" :items="contentItems" />
+    <ContentNav v-if="contentItems.length > 0" :items="contentItems" />
 
-    <div v-if="post.content.length" class="border-b-[1px] border-[#e5e5e5]">
+    <div v-if="post.content.length" class="border-[#e5e5e5] border-b-[1px]">
       <PostContent :content="post.content ?? ''" />
     </div>
   </ContentLayout>

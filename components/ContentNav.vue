@@ -1,5 +1,5 @@
 <template>
-    <ul class="content-nav" v-if="items.length">
+    <ul class="contentNav" v-if="items.length">
         <li v-for="(item, i) in items" :key="i">
             <NuxtLink :to="'#' + item.id">{{ item.title }}</NuxtLink>
         </li>
@@ -17,30 +17,29 @@ defineProps({
 </script>
 
 <style scoped>
-.content-nav {
-    background-color: #eee;
-    border-radius: 7px;
+.contentNav {
     color: gray;
     padding: 20px 30px;
     font-size: 18px;
     line-height: 35px;
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.content-nav li:not(:last-child) {
+.contentNav li:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.content-nav li {
+.contentNav li {
     list-style: none;
     counter-increment: item;
     position: relative;
 }
 
-.content-nav li > *::before {
+.contentNav li > *::before {
     content: counter(item) '. ';
 }
 
-.content-nav li > * {
+.contentNav li > * {
     display: block;
 }
 </style>
