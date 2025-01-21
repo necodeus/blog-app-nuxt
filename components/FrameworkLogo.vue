@@ -1,5 +1,6 @@
 <template>
-    <svg :style="{ opacity: 0.5 }" :width="width" viewBox="0 0 128 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="icon" :width="width" viewBox="0 0 128 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+        @click="handleClick">
         <path
             d="M60.32 32C60.6656 32 60.96 31.7135 60.96 31.36V16.48C60.96 16.48 61.76 17.92 63.2 20.32L69.44 31.04C69.7255 31.6384 70.359 32 70.88 32H75.2V8H70.88C70.5923 8 70.24 8.23906 70.24 8.64V23.68L67.36 18.56L61.6 8.8C61.3197 8.3026 60.7166 8 60.16 8H56V32H60.32Z"
             fill="black" />
@@ -25,4 +26,21 @@ defineProps({
         required: true,
     },
 })
+
+const handleClick = async () => {
+    await fetch('/api/set-version');
+    window.location.reload();
+}
 </script>
+
+<style>
+.icon {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.icon:hover {
+    opacity: 1;
+}
+</style>

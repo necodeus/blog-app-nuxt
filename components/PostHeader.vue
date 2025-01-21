@@ -10,10 +10,7 @@
                 <img class="background" :src="coverPicture?.['1200x4320']" loading="lazy" alt="" />
             </picture>
             <div class="px-[30px] !pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
-                <PublicationDetails :publisher="{
-                    name: postAuthor.name, path: postAuthor.path, picture:
-                        postAuthor.author_picture
-                }" :createdAt="createdAt" />
+                <PublicationDetails :publisher="publisher" :createdAt="createdAt" />
                 <div class="relative !py-0">
                     <h1 class="flex">
                         <span class="text-[38px]">{{ name }}</span>
@@ -27,7 +24,7 @@
 
                 <div class="divSeparator"></div>
 
-                <div>{{ numberOfComments || 0 }} {{ commentsText }}</div>
+                <div>{{ rating }}</div>
             </div>
             <div v-if="teaser?.length > 0" class="mt-[10px] text-[20px] leading-[35px]">{{ teaser }}</div>
         </div>
@@ -37,8 +34,6 @@
 <script setup>
 import moment from 'moment/min/moment-with-locales'
 moment.locale('pl')
-
-import { numberToPolishNumeral } from "../server/utils/stringNumerals"
 
 const { postAuthor, numberOfComments } = defineProps({
     coverPicture: {
@@ -78,12 +73,6 @@ const publisher = {
     path: postAuthor?.path,
     picture: postAuthor?.author_picture,
 }
-
-const commentsText = numberToPolishNumeral(numberOfComments, {
-    one: 'komentarz',
-    many: 'komentarzy',
-    exceptions: 'komentarze',
-});
 </script>
 
 <style scoped>
