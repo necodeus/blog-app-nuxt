@@ -1,19 +1,20 @@
 <template>
-    <div class="font-jost component-border-bottom">
+    <div class="font-jost  border-b-[1px] border-[#e5e5e5]">
         <div class="relative">
             <picture>
                 <source v-if="coverPicture?.['785x420']" media="(min-width: 1468px)"
-                    :src-set="coverPicture?.['785x420']" />
+                    :srcset="coverPicture?.['785x420']" />
                 <source v-if="coverPicture?.['1200x430']" media="(min-width: 800px)"
-                    :src-set="coverPicture?.['1200x430']" />
-                <source v-if="coverPicture?.['785x420']" media="(min-width: 0px)"
-                    :src-set="coverPicture?.['785x420']" />
-                <img class="background" :src="coverPicture?.['1200x430']" loading="lazy" alt="" />
+                    :srcset="coverPicture?.['1200x430']" />
+                <source v-if="coverPicture?.['785x420']" media="(min-width: 0px)" :srcset="coverPicture?.['785x420']" />
+                <img class="background" :src="coverPicture?.['1200x4320']" loading="lazy" alt="" />
             </picture>
-            <div class="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
-                <PublicationDetails :publisher="publisher" :createdAt="createdAt" />
-
-                <div class="p-[30px] relative !py-0">
+            <div class="px-[30px] !pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
+                <PublicationDetails :publisher="{
+                    name: postAuthor.name, path: postAuthor.path, picture:
+                        postAuthor.author_picture
+                }" :createdAt="createdAt" />
+                <div class="relative !py-0">
                     <h1 class="flex">
                         <span class="text-[38px]">{{ name }}</span>
                     </h1>
@@ -23,10 +24,12 @@
         <div class="p-[30px] relative !pt-[10px] bg-white">
             <div class="flex items-center">
                 <Stars :width="160" :height="30" :rating="rating" :gapWidth="5" />
+
                 <div class="divSeparator"></div>
-                <div>{{numberOfComments || 0}} {{ commentsText }}</div>
+
+                <div>{{ numberOfComments || 0 }} {{ commentsText }}</div>
             </div>
-            <div class="mt-[10px] text-[20px] leading-[35px]">{{ teaser }}</div>
+            <div v-if="teaser?.length > 0" class="mt-[10px] text-[20px] leading-[35px]">{{ teaser }}</div>
         </div>
     </div>
 </template>
