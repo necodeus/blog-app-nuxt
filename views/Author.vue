@@ -25,15 +25,12 @@ defineProps({
         required: true,
         default: () => [],
     },
-});
-
-const links = [
-    {
-        href: "https://necodeus.com/",
-        text: "Wizytówka",
-        description: "dawid.smulewicz.pro",
+    links: {
+        type: Array,
+        required: true,
+        default: () => [],
     },
-];
+});
 </script>
 
 <template>
