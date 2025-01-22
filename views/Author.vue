@@ -39,7 +39,7 @@ defineProps({
             <TopNavbar :items="navigation" />
         </template>
 
-        <SectionTitle text="Autor necodeus" class="p-[30px]" />
+        <SectionTitle :text="`Autor ${author.name}`" class="p-[30px]" />
         <AuthorDetails class="p-[30px] component-border-bottom" :name="author.name" :bio="author.bio"
             :numberOfPosts="posts.length" :avatar_image_id="author.avatar_image_id" />
         <SectionTitle text="Artykuły" class="p-[30px]" />
