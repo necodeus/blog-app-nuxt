@@ -46,8 +46,8 @@ defineProps({
         <AuthorPosts :posts="posts" />
 
         <template #rightSidebar>
-            <SectionTitle text="Linki zewnętrzne" class="p-[30px]" />
-            <AsideLinks :links="links" />
+            <SectionTitle v-if="links.length > 0" text="Linki zewnętrzne" class="p-[30px]" />
+            <AsideLinks v-if="links.length > 0" :links="links" />
 
             <SectionTitle text="Spotify na żywo" class="p-[30px]" />
             <div class="p-[30px] component-border-bottom">
