@@ -50,7 +50,7 @@ defineProps({
             <AsideLinks v-if="links.length > 0" :links="links" />
 
             <SectionTitle v-if="spotifyActivity?.player?.length > 0" text="Spotify na żywo" class="p-[30px]" />
-            <div v-if="spotifyActivity?.player?.length > 0" class="p-[30px] component-border-bottom">
+            <div v-if="spotifyActivity?.player?.length > 0" class="p-[15px] component-border-bottom">
                 <AsideSpotify :spotifyActivity="spotifyActivity" />
             </div>
         </template>
