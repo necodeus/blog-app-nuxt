@@ -15,10 +15,10 @@ defineProps({
         required: true,
         default: () => { },
     },
-    songs: {
-        type: Array,
+    spotifyActivity: {
+        type: Object,
         required: true,
-        default: () => [],
+        default: () => {},
     },
     posts: {
         type: Array,
@@ -49,9 +49,9 @@ defineProps({
             <SectionTitle v-if="links.length > 0" text="Linki zewnętrzne" class="p-[30px]" />
             <AsideLinks v-if="links.length > 0" :links="links" />
 
-            <SectionTitle text="Spotify na żywo" class="p-[30px]" />
-            <div class="p-[30px] component-border-bottom">
-                <AsideSpotify :songs="songs" />
+            <SectionTitle v-if="spotifyActivity?.player?.length > 0" text="Spotify na żywo" class="p-[30px]" />
+            <div v-if="spotifyActivity?.player?.length > 0" class="p-[30px] component-border-bottom">
+                <AsideSpotify :spotifyActivity="spotifyActivity" />
             </div>
         </template>
     </ContentLayout>

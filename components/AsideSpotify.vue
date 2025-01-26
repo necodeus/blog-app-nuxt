@@ -1,6 +1,6 @@
 <template>
     <div className="flex flex-col gap-[30px]">
-    <div v-for="(song, song_index) of songs" v-bind:key="song_index">
+    <div v-for="(song, song_index) of spotifyActivity.player" v-bind:key="song_index">
       <div class="opacity-[0.5] flex items-center" v-if="song.type === 'history'">
         <div
           class="w-[60px] h-[60px] min-w-[60px] min-h-[60px] bg-[black] bg-center bg-cover mr-[10px]"
@@ -51,9 +51,9 @@ import moment from "moment/min/moment-with-locales"
 moment.locale("pl")
 
 defineProps({
-  songs: {
-    type: Array,
-    default: () => [],
+  spotifyActivity: {
+    type: Object,
+    default: () => {},
     required: true,
   },
 })
