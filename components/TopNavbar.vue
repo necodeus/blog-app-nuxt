@@ -13,7 +13,7 @@ const router = useRouter();
 </script>
 
 <template>
-    <div class="component-border-bottom font-jost text-[16px] h-[50px] flex">
+    <div class="component-border-bottom font-jost text-[16px] h-[50px] flex items-center justify-between">
         <div :style="{
             display: 'flex',
             gap: '30px',
@@ -21,9 +21,7 @@ const router = useRouter();
             margin: '0 30px',
         }">
             <div class="flex items-center gap-[15px]">
-                <Logo height="25" />
-                <div class="logoSeparator"></div>
-                <FrameworkLogo :width="75" />
+                <Logo />
             </div>
             <template v-if="items.length">
                 <NuxtLink
@@ -34,6 +32,9 @@ const router = useRouter();
                     {{ item.name }}
                 </NuxtLink>
             </template>
+        </div>
+        <div class="mr-[30px]">
+            <FrameworkLogo :width="75" />
         </div>
     </div>
 </template>
